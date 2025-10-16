@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
 import os
+import matplotlib.pyplot as plt
 
 # Get API key from Streamlit Cloud secrets
 openai.api_key = os.environ.get("OPENAI_API_KEY")
