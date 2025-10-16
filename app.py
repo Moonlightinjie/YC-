@@ -18,12 +18,12 @@ user_input = st.text_input("Ask a CSEC question:")
 # Send button
 if st.button("Send") and user_input:
     try:
-        # Call OpenAI API
-        response = openai.ChatCompletion.create(
+        # Call OpenAI new API
+        response = openai.chat.completions.create(
             model="gpt-5-mini",
             messages=[{"role": "user", "content": user_input}]
         )
-        answer = response.choices[0].message['content']
+        answer = response.choices[0].message.content
 
         # Save chat history
         st.session_state.chat_history.append(("You", user_input))
@@ -34,4 +34,5 @@ if st.button("Send") and user_input:
 # Display chat history
 for sender, msg in st.session_state.chat_history:
     st.markdown(f"**{sender}:** {msg}")
+
 
